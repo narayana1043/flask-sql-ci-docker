@@ -45,3 +45,10 @@ dev-ps:
 #Show development logs
 dev-logs:
 	docker-compose -f docker/dev/docker-compose.yml logs -f
+
+#Run tests
+test-run:
+	docker-compose -f docker/dev/docker-compose.yml up -d
+	sleep 10
+	docker-compose -f docker/dev/docker-compose.yml exec web flask test
+	docker-compose -f docker/dev/docker-compose.yml down
